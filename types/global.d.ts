@@ -1,0 +1,1 @@
+import 'lighthouse/types/internal/global.js';
