@@ -6,8 +6,11 @@
   "main": "plugin.js",
   "license": "ISC",
   "scripts": {
+    "reset-link": "npm link && npm link lighthouse-plugin-spa",
     "type-check": "tsc",
-    "test": "node test/test.js"
+    "pretest:e2e": "npm run reset-link",
+    "test:e2e": "node test/test.js",
+    "test": "npm run type-check && npm run test:e2e"
   },
   "devDependencies": {
     "lighthouse": "^10.0.1",
