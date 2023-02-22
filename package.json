@@ -1,12 +1,12 @@
 {
-  "name": "lighthouse-plugin-spa",
+  "name": "lighthouse-plugin-soft-navigation",
   "version": "1.0.0",
-  "description": "Lighthouse plugin that reports metrics such as LCP and FCP from a SPA navigation.",
+  "description": "Lighthouse plugin that reports metrics such as LCP and FCP from a soft navigation.",
   "type": "module",
   "main": "plugin.js",
   "license": "ISC",
   "scripts": {
-    "reset-link": "npm link && npm link lighthouse-plugin-spa",
+    "reset-link": "npm link && npm link lighthouse-plugin-soft-navigation",
     "type-check": "tsc",
     "pretest:e2e": "npm run reset-link",
     "test:e2e": "node test/e2e/run.js",
