@@ -4,7 +4,16 @@ This is a plugin for [Lighthouse](https://github.com/GoogleChrome/lighthouse) th
 
 A soft navigation is a same-document navigation triggered by user interaction that updates the page URL using something like the history API and mutates the DOM. You can read more about the definition of a soft navigation over in [WICG/softnavigations](https://github.com/WICG/soft-navigations).
 
-![image](https://user-images.githubusercontent.com/6752989/220516999-554165f5-f246-4640-b5f6-78da173a17e1.png)
+![image](https://user-images.githubusercontent.com/6752989/220523511-9ec52d43-d0da-4765-96f7-0ed8a8edfa07.png)
+
+## Requirements
+
+> **Warning**
+> These features are necessary for this plugin to work but they are experimental and therefore subject to change without warning.
+
+- Use the latest [Chrome Canary](https://www.google.com/chrome/canary/)
+- Launch Chrome with `--enable-experimental-web-platform-features` to enable soft navigation measurement.
+- Add `additionalTraceCategories: 'scheduler'` to the Lighthouse config settings to collect the soft navigation trace events.
 
 ## Installation
 
@@ -21,12 +30,6 @@ yarn add lighthouse puppeteer lighthouse-plugin-soft-navigation
 ## Usage
 
 This plugin can be enabled for Lighthouse timespan mode which can be started in a [user flow](https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md).
-
-### Requirements
-
-- Make sure you are using the latest [Chrome Canary](https://www.google.com/chrome/canary/).
-- `--enable-experimental-web-platform-features` enables soft navigation measurement in Chrome.
-- `additionalTraceCategories: 'scheduler'` tells Lighthouse to pick up the soft navigation trace events.
 
 ```js
 import fs from 'fs';
