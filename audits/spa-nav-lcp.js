@@ -30,7 +30,7 @@ class SPANavLCP extends Audit {
     const trace = artifacts.Trace;
     const processedTrace = await ProcessedTrace.request(trace, context);
     
-    const {lcpTiming} = computeMetricTimings(processedTrace);
+    const {lcpTiming} = computeMetricTimings(processedTrace.mainThreadEvents);
     if (!lcpTiming) {
       return {
         notApplicable: true,

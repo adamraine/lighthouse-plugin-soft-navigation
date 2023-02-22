@@ -2,7 +2,7 @@ import fs from 'fs';
 import open from 'open';
 import puppeteer from 'puppeteer';
 import {startTimespan} from 'lighthouse';
-import config from '../config.js';
+import config from '../../config.js';
 import assert from 'assert';
 
 const browser = await puppeteer.launch({

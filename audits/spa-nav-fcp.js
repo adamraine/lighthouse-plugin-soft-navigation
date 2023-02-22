@@ -30,7 +30,7 @@ class SPANavFCP extends Audit {
     const trace = artifacts.Trace;
     const processedTrace = await ProcessedTrace.request(trace, context);
     
-    const {fcpTiming} = computeMetricTimings(processedTrace);
+    const {fcpTiming} = computeMetricTimings(processedTrace.mainThreadEvents);
     if (!fcpTiming) {
       return {
         notApplicable: true,
