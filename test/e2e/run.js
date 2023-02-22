@@ -2,7 +2,6 @@ import fs from 'fs';
 import open from 'open';
 import puppeteer from 'puppeteer';
 import {startTimespan} from 'lighthouse';
-import config from '../../config.js';
 import assert from 'assert';
 
 const browser = await puppeteer.launch({
@@ -11,13 +10,21 @@ const browser = await puppeteer.launch({
 });
 const page = await browser.newPage();
 
+/** @type {import('lighthouse').Config} */
+const config = {
+  extends: 'lighthouse:default',
+  plugins: ['lighthouse-plugin-spa'],
+  
+  settings: {
+    output: 'html',
+    additionalTraceCategories: 'scheduler',
+  },
+}
+
 await page.goto('https://next-movies-zeta.vercel.app/?category=Popular&page=1');
 await page.waitForTimeout(2000);
 
-const timespan = await startTimespan(page, {
-  config,
-  flags: {output: 'html'}
-});
+const timespan = await startTimespan(page, {config});
 
 await page.click('.hamburger-button');
 await page.waitForSelector('a[href="/?category=Popular&page=1"]');
