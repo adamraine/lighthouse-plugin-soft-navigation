@@ -4,9 +4,9 @@ This is a plugin for [Lighthouse](https://github.com/GoogleChrome/lighthouse) th
 
 ![image](https://user-images.githubusercontent.com/6752989/220523511-9ec52d43-d0da-4765-96f7-0ed8a8edfa07.png)
 
-## Soft Navigations
+## Definition
 
-A soft navigation is a same-document navigation triggered by user interaction that updates the page URL using something like the history API and mutates the DOM. You can read more about the definition of a soft navigation over in [WICG/softnavigations](https://github.com/WICG/soft-navigations).
+A soft navigation is a same-document navigation triggered by user interaction that mutates the DOM and updates the page URL (e.g. using the [history API](https://developer.mozilla.org/en-US/docs/Web/API/History_API)). You can read more about the definition of a soft navigation over in [WICG/softnavigations](https://github.com/WICG/soft-navigations).
 
 ## Requirements
 
