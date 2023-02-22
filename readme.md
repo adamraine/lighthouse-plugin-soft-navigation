@@ -2,16 +2,18 @@
 
 This is a plugin for [Lighthouse](https://github.com/GoogleChrome/lighthouse) that measures metrics such as FCP and LCP in a soft navigation.
 
-A soft navigation is a same-document navigation triggered by user interaction that updates the page URL using something like the history API and mutates the DOM. You can read more about the definition of a soft navigation over in [WICG/softnavigations](https://github.com/WICG/soft-navigations).
-
 ![image](https://user-images.githubusercontent.com/6752989/220523511-9ec52d43-d0da-4765-96f7-0ed8a8edfa07.png)
+
+## Soft Navigations
+
+A soft navigation is a same-document navigation triggered by user interaction that updates the page URL using something like the history API and mutates the DOM. You can read more about the definition of a soft navigation over in [WICG/softnavigations](https://github.com/WICG/soft-navigations).
 
 ## Requirements
 
 > **Warning**
-> These features are necessary for this plugin to work but they are experimental and therefore subject to change without warning.
+> These features are necessary for this plugin to work but they are experimental and therefore subject to change without warning. I will try to keep the plugin and requirements up to date as things change.
 
-- Use the latest [Chrome Canary](https://www.google.com/chrome/canary/)
+- Use the latest [Chrome Canary](https://www.google.com/chrome/canary/).
 - Launch Chrome with `--enable-experimental-web-platform-features` to enable soft navigation measurement.
 - Add `additionalTraceCategories: 'scheduler'` to the Lighthouse config settings to collect the soft navigation trace events.
 
@@ -29,7 +31,7 @@ yarn add lighthouse puppeteer lighthouse-plugin-soft-navigation
 
 ## Usage
 
-This plugin can be enabled for Lighthouse timespan mode which can be started in a [user flow](https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md).
+Include this plugin in your Lighthouse config so Lighthouse [timespan](https://github.com/GoogleChrome/lighthouse/blob/main/docs/user-flows.md#timespan) mode can audit interactions that trigger a soft navigation.
 
 ```js
 import fs from 'fs';
@@ -59,7 +61,7 @@ const flow = await startFlow(page, {config});
 // This step will be like any normal navigation in the report.
 await flow.navigate('https://example.com');
 
-// This timespan includes a soft navigation.
+// Clicking `a.link` will trigger a soft navigation.
 // This step will include soft navigation metrics from the plugin in the report.
 await flow.startTimespan();
 await page.click('a.link');
