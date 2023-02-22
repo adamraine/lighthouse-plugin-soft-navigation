@@ -10,10 +10,13 @@
     "type-check": "tsc",
     "pretest:e2e": "npm run reset-link",
     "test:e2e": "node test/test.js",
-    "test": "npm run type-check && npm run test:e2e"
+    "test:unit": "mocha",
+    "test": "npm run type-check && npm run test:unit && npm run test:e2e"
   },
   "devDependencies": {
+    "@types/mocha": "^10.0.1",
     "lighthouse": "^10.0.1",
+    "mocha": "^10.2.0",
     "puppeteer": "^19.7.1",
     "typescript": "^4.9.5"
   },
