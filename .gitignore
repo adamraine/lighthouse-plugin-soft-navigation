@@ -3,3 +3,4 @@
 node_modules
 
 lighthouse-plugin-soft-navigation*.tgz
+*.report.html
