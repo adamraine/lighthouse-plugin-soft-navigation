@@ -31,8 +31,8 @@ describe('computeMetricTimings', () => {
     
     const timings = computeMetricTimings(traceEvents);
     
-    assert.equal(timings.fcpTiming, 80);
-    assert.equal(timings.lcpTiming, 90);
+    assert.strictEqual(timings.fcpTiming, 80);
+    assert.strictEqual(timings.lcpTiming, 90);
   });
 
   it('returns undefined for missing lcp', () => {
@@ -45,8 +45,8 @@ describe('computeMetricTimings', () => {
     
     const timings = computeMetricTimings(traceEvents);
     
-    assert.equal(timings.fcpTiming, 90);
-    assert.equal(timings.lcpTiming, undefined);
+    assert.strictEqual(timings.fcpTiming, 90);
+    assert.strictEqual(timings.lcpTiming, undefined);
   });
 
   it('returns undefined for missing fcp', () => {
@@ -58,8 +58,8 @@ describe('computeMetricTimings', () => {
     
     const timings = computeMetricTimings(traceEvents);
     
-    assert.equal(timings.fcpTiming, undefined);
-    assert.equal(timings.lcpTiming, undefined);
+    assert.strictEqual(timings.fcpTiming, undefined);
+    assert.strictEqual(timings.lcpTiming, undefined);
   });
 
   it('throws if multiple soft navigations are found', () => {
@@ -69,10 +69,10 @@ describe('computeMetricTimings', () => {
       traceEvent({name: 'SoftNavigationHeuristics_SoftNavigationDetected', ts: 1_001_000}),
       traceEvent({name: 'firstContentfulPaint', ts: 1_090_000}),
       traceEvent({name: 'largestContentfulPaint::Candidate', ts: 1_090_000}),
-      traceEvent({name: 'SoftNavigationHeuristics::UserInitiatedClick', ts: 200_000}),
-      traceEvent({name: 'SoftNavigationHeuristics_SoftNavigationDetected', ts: 201_000}),
-      traceEvent({name: 'firstContentfulPaint', ts: 290_000}),
-      traceEvent({name: 'largestContentfulPaint::Candidate', ts: 290_000}),
+      traceEvent({name: 'SoftNavigationHeuristics::UserInitiatedClick', ts: 2_000_000}),
+      traceEvent({name: 'SoftNavigationHeuristics_SoftNavigationDetected', ts: 2_001_000}),
+      traceEvent({name: 'firstContentfulPaint', ts: 2_090_000}),
+      traceEvent({name: 'largestContentfulPaint::Candidate', ts: 2_090_000}),
     ];
     
     assert.throws(() => computeMetricTimings(traceEvents), new Error('Multiple soft navigations detected'));
@@ -91,8 +91,8 @@ describe('computeMetricTimings', () => {
     
     const timings = computeMetricTimings(traceEvents);
     
-    assert.equal(timings.fcpTiming, 90);
-    assert.equal(timings.lcpTiming, 90);
+    assert.strictEqual(timings.fcpTiming, 90);
+    assert.strictEqual(timings.lcpTiming, 90);
   });
 
   it('uses last click start before soft navigation detected as time origin', () => {
@@ -108,7 +108,7 @@ describe('computeMetricTimings', () => {
     
     const timings = computeMetricTimings(traceEvents);
     
-    assert.equal(timings.fcpTiming, 70);
-    assert.equal(timings.lcpTiming, 70);
+    assert.strictEqual(timings.fcpTiming, 70);
+    assert.strictEqual(timings.lcpTiming, 70);
   });
 });
