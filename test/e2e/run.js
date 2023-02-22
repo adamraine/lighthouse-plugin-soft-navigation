@@ -13,7 +13,7 @@ const page = await browser.newPage();
 /** @type {import('lighthouse').Config} */
 const config = {
   extends: 'lighthouse:default',
-  plugins: ['lighthouse-plugin-spa'],
+  plugins: ['lighthouse-plugin-soft-navigation'],
   
   settings: {
     output: 'html',
@@ -34,33 +34,33 @@ await page.waitForTimeout(2000);
 const result = await timespan.endTimespan();
 if (!result) throw new Error('No result')
 
-const spaCategory = result.lhr.categories['lighthouse-plugin-spa'];
-assert.deepStrictEqual(spaCategory, {
-  id: 'lighthouse-plugin-spa',
-  title: 'SPA',
+const softNavCategory = result.lhr.categories['lighthouse-plugin-soft-navigation'];
+assert.deepStrictEqual(softNavCategory, {
+  id: 'lighthouse-plugin-soft-navigation',
+  title: 'Soft Navigation',
   description: undefined,
   manualDescription: undefined,
   supportedModes: ['timespan'],
   score: 1,
   auditRefs: [
     {
-      id: 'spa-nav-fcp',
+      id: 'soft-nav-fcp',
       weight: 1,
-      group: 'lighthouse-plugin-spa-metrics'
+      group: 'lighthouse-plugin-soft-navigation-metrics'
     },
     {
-      id: 'spa-nav-lcp',
+      id: 'soft-nav-lcp',
       weight: 1,
-      group: 'lighthouse-plugin-spa-metrics'
+      group: 'lighthouse-plugin-soft-navigation-metrics'
     }
   ],
 });
 
-const spaLcpAudit = result.lhr.audits['spa-nav-lcp'];
-assert.ok(spaLcpAudit);
-assert.strictEqual(spaLcpAudit.score, 1);
-assert.ok(spaLcpAudit.numericValue);
-assert.ok(spaLcpAudit.numericValue < 1500);
+const softNavLcpAudit = result.lhr.audits['soft-nav-lcp'];
+assert.ok(softNavLcpAudit);
+assert.strictEqual(softNavLcpAudit.score, 1);
+assert.ok(softNavLcpAudit.numericValue);
+assert.ok(softNavLcpAudit.numericValue < 1500);
 
 if (process.argv.includes('--view')) {
   // @ts-expect-error

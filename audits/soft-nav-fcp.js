@@ -6,15 +6,15 @@ import {computeMetricTimings} from '../lib/metric-timings.js';
 /** @typedef {import('lighthouse/types/audit.js').default.Product} AuditProduct */
 /** @typedef {import('lighthouse/types/audit.js').default.Context} AuditContext */
 
-class SPANavLCP extends Audit {
+class SoftNavFCP extends Audit {
   /**
    * @return {AuditMeta}
    */
   static get meta() {
     return {
-      id: 'spa-nav-lcp',
-      title: 'SPA Navigation Largest Contentful Paint',
-      description: 'Largest Contentful Paint of a SPA navigation also known as a soft navigation.',
+      id: 'soft-nav-fcp',
+      title: 'Soft Navigation First Contentful Paint',
+      description: 'First Contentful Paint of a soft navigation.',
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       supportedModes: ['timespan'],
       requiredArtifacts: ['Trace'],
@@ -30,8 +30,8 @@ class SPANavLCP extends Audit {
     const trace = artifacts.Trace;
     const processedTrace = await ProcessedTrace.request(trace, context);
     
-    const {lcpTiming} = computeMetricTimings(processedTrace.mainThreadEvents);
-    if (!lcpTiming) {
+    const {fcpTiming} = computeMetricTimings(processedTrace.mainThreadEvents);
+    if (!fcpTiming) {
       return {
         notApplicable: true,
         score: 1,
@@ -39,15 +39,15 @@ class SPANavLCP extends Audit {
     }
     
     return {
-      numericValue: lcpTiming,
+      numericValue: fcpTiming,
       numericUnit: 'millisecond',
-      displayValue: `${lcpTiming} ms`,
+      displayValue: `${fcpTiming} ms`,
       score: Audit.computeLogNormalScore({
-        p10: 2500,
-        median: 4000
-      }, lcpTiming)
+        p10: 1800,
+        median: 3000
+      }, fcpTiming)
     }
   }
 }
 
-export default SPANavLCP;
+export default SoftNavFCP;

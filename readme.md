@@ -11,11 +11,11 @@ A soft navigation is a same-document navigation triggered by user interaction th
 Install with npm or yarn. Make sure Lighthouse and Puppeteer are installed as well.
 
 ```sh
-npm install lighthouse puppeteer lighthouse-plugin-spa
+npm install lighthouse puppeteer lighthouse-plugin-soft-navigation
 ```
 
 ```sh
-yarn add lighthouse puppeteer lighthouse-plugin-spa
+yarn add lighthouse puppeteer lighthouse-plugin-soft-navigation
 ```
 
 ## Usage
@@ -43,7 +43,7 @@ const page = await browser.newPage();
 
 const config = {
   extends: 'lighthouse:default',
-  plugins: ['lighthouse-plugin-spa'],
+  plugins: ['lighthouse-plugin-soft-navigation'],
   
   settings: {
     additionalTraceCategories: 'scheduler',
