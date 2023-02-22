@@ -9,7 +9,7 @@
     "reset-link": "npm link && npm link lighthouse-plugin-spa",
     "type-check": "tsc",
     "pretest:e2e": "npm run reset-link",
-    "test:e2e": "node test/test.js",
+    "test:e2e": "node test/e2e/run.js",
     "test:unit": "mocha",
     "test": "npm run type-check && npm run test:unit && npm run test:e2e"
   },
