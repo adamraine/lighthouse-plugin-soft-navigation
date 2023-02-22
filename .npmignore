@@ -1,2 +1,10 @@
+.vscode
+
 test
+.mocharc.json
+
 types
+tsconfig.json
+
+lighthouse-plugin-soft-navigation*.tgz
+*.report.html
