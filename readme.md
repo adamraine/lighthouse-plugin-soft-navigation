@@ -1,6 +1,6 @@
-# Lighthouse SPA Navigation Plugin
+# Lighthouse Soft Navigation Plugin
 
-This is a plugin for [Lighthouse](https://github.com/GoogleChrome/lighthouse) that measures metrics such as FCP and LCP in a SPA navigation also known as a soft navigation.
+This is a plugin for [Lighthouse](https://github.com/GoogleChrome/lighthouse) that measures metrics such as FCP and LCP in a soft navigation.
 
 A soft navigation is a same-document navigation triggered by user interaction that updates the page URL using something like the history API and mutates the DOM. You can read more about the definition of a soft navigation over in [WICG/softnavigations](https://github.com/WICG/soft-navigations).
 
