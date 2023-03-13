@@ -1,8 +1,8 @@
 /** @type {import('lighthouse').Config.Plugin} */
 export default {
   audits: [
-    {path: 'lighthouse-plugin-soft-navigation/audits/soft-nav-fcp.js'},
-    {path: 'lighthouse-plugin-soft-navigation/audits/soft-nav-lcp.js'},
+    {path: 'lighthouse-plugin-soft-navigation/audits/soft-nav-fcp'},
+    {path: 'lighthouse-plugin-soft-navigation/audits/soft-nav-lcp'},
   ],
   groups: {
     'metrics': {
