@@ -15,7 +15,6 @@ A soft navigation is a same-document navigation triggered by user interaction th
 
 - Use the latest [Chrome Canary](https://www.google.com/chrome/canary/).
 - Launch Chrome with `--enable-experimental-web-platform-features` to enable soft navigation measurement.
-- Add `additionalTraceCategories: 'scheduler'` to the Lighthouse config settings to collect the soft navigation trace events.
 
 ## Installation
 
@@ -49,10 +48,6 @@ const page = await browser.newPage();
 const config = {
   extends: 'lighthouse:default',
   plugins: ['lighthouse-plugin-soft-navigation'],
-  
-  settings: {
-    additionalTraceCategories: 'scheduler',
-  },
 }
 
 const flow = await startFlow(page, {config});
