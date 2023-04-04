@@ -1,6 +1,6 @@
 {
   "name": "lighthouse-plugin-soft-navigation",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Lighthouse plugin that reports metrics such as LCP and FCP from a soft navigation.",
   "type": "module",
   "main": "plugin.js",
